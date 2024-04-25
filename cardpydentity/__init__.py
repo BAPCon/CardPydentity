@@ -1,5 +1,5 @@
 import json
-from .load import get_app_path, register_source, try_fetch_data
+from .load import get_app_path, local_source, register_source, try_fetch_data
 from .matcher import Matcher
 
 APP_NAME = 'CardIdentifier'
@@ -7,7 +7,8 @@ __version__ = "0.1.0"
 
 JSON_FILES = (
     ('pokemon', 'https://bidrpublicfiles.s3.amazonaws.com/pokemon.json'),
-    ('magic',   'https://bidrpublicfiles.s3.amazonaws.com/mtg.json')
+    ('magic',   'https://bidrpublicfiles.s3.amazonaws.com/mtg.json'),
+    ('funko',   'https://bidrpublicfiles.s3.amazonaws.com/funko.json'),
 )
 
 SOURCES_REGISTERED = False
@@ -48,6 +49,8 @@ class CardPydentitier:
                     CardPydentitier.__load_app_data__, 
                     {'url': url, 'file_name': f"{name}.json"}
                 )
+            register_source('yugioh', local_source, {'path': 'yugioh.json'})
+            register_source('one_piece', local_source, {'path': 'one_piece.json'})
 
     def __load_app_data__(url: str, file_name: str):
         '''

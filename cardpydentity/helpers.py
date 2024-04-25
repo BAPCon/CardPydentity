@@ -46,7 +46,7 @@ def extract_grades_in_text(text: str) -> list[str]:
     '''
     Extracts grades from a string. 
     '''
-    grades = ['NM', 'M', 'LP', 'MP', 'HP']
+    grades = ['NM', 'M', 'LP', 'MP', 'HP', 'Near Mint', 'Mint', 'Lightly Played', 'Moderately Played', 'Heavily Played']
     response = []
     for word in text.split(' '):
         for grade in grades:
@@ -55,4 +55,9 @@ def extract_grades_in_text(text: str) -> list[str]:
                 continue
             if any(word.replace(' ', '') == f'{grade}/{grade2}' or word.replace(' ', '') == f'{grade2}/{grade}' for grade2 in grades):
                 response.append(grade)
+    for i in range(20):
+        if f'BGS {round(i/2, 1)}' in text:
+            grades.append(f'BGS {round(i/2, 1)}')
+        if f'PSA {round(i/2, 1)}' in text:
+            grades.append(f'PSA {round(i/2, 1)}')
     return response

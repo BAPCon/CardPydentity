@@ -40,6 +40,10 @@ class Matcher:
             return 'funko'
         if any(kword in text.lower() for kword in ['magic: the gathering', 'magic the gathering']) or 'mtg' in text.lower().split(' '):
             return 'magic'
+        if any(kword in text.lower() for kword in ['yugioh']):
+            return 'yugioh'
+        if any(kword in text.lower() for kword in ['one piece']):
+            return 'one_piece'
 
     def substitute(self, text: str, substitutions: list[list[str]]) -> str:
         '''
@@ -144,12 +148,14 @@ class Matcher:
             vals.append(series['year'])
         if self.included_attrs['tuple'] and item.get('number'):
             vals.append(item['number'])
+        else:
+            vals.append(item.get('number', '***'))
         if series.get('total_cards'):
             total_cards_str = str(series.get('total_cards'))
             base_str = str(series.get('total_base', '***'))
             vals.append(
                 series['total_base'] if base_str in self.tuple_present else series['total_cards'])
-        for k in ['name', 'rarity']:
+        for k in ['name', 'rarity', 'abbrv']:
             if item.get(k):
                 vals.append(item[k])
         vals.append(series['name'])
@@ -171,7 +177,8 @@ class Matcher:
             response.append({
                 'series': series_min,
                 'card': self.data[series_idx]['prints'][card_idx],
-                'score': match[1]
+                'score': match[1],
+                'match': match[0]
             })
         return response
 
@@ -190,6 +197,14 @@ SUBSTITUTIONS = {
     'funko': {
         'subs': [],
         'remove': ['Funko Pop!', 'Funko Pop', 'Funko', 'Pop']
+    },
+    'yugioh': {
+        'subs': [],
+        'remove': ['Card', 'Yugioh']
+    },
+    'one_piece': {
+        'subs': [],
+        'remove': ['Card', 'One Piece', 'CARD GAME']
     }
 }
 # Path: CardIdentifier/load.py

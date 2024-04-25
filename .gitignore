@@ -2,3 +2,6 @@
 /cardpydentity.egg-info
 *.pyc
 /dist
+*.jpg
+app.py
+/random_data

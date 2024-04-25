@@ -27,12 +27,14 @@ CardPydentitier.Build("SQUIRTLE - 1999 WOTC Pokemon Card 63/102 Non Holo - LP/MP
 ```
 
 ## About
-Simpler, non-ML, and local version of BiDR TV's collectibles classifier. More collectible categories are planned.
+Simpler, non-ML, and local version of collectibles classifier. More collectible categories are planned. 
+
+A Python package that allows collectibles and trading cards to be identified and parsed from the title of a listing on eBay or any other retailers. Currently uses [fuzzymatching](https://en.wikipedia.org/wiki/Approximate_string_matching) and a master list of over 135,000 Pokemon and Magic: The Gathering cards.
 
 #### Current Available Brands:
 -   Magic: The Gathering
 -   Pokemon
--   Funko (partial)
+-   ~~Funko~~ (partial in dev version)
 
 #### Planned:
 - One Piece
