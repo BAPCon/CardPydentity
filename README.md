@@ -2,7 +2,7 @@
 
 ![PyPI - Version](https://img.shields.io/pypi/v/cardpydentity)
 
-Python package for identifying Pokemon/MTG cards from auction titles
+Python package for identifying Pokemon/MTG cards from auction titles.   
 
 ## Installing
 
@@ -37,6 +37,10 @@ Simpler, non-ML, and local version of BiDR TV's collectibles classifier. More co
 #### Planned:
 - One Piece
 - Yu-Gi-Oh
+
+## TO-DO
+- Threaded matching
+- Grading extraction
 
 ## Issues/Info
 
