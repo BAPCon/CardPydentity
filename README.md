@@ -2,7 +2,7 @@
 
 ![PyPI - Version](https://img.shields.io/pypi/v/cardpydentity)
 
-Python package for identifying Pokemon/MTG cards from auction titles.   
+Python package for identifying Pokemon, Magic: The Gathering, One Piece, and Yu-Gi-Oh cards from unstructured auction titles.  
 
 ## Installing
 
