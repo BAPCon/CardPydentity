@@ -46,18 +46,46 @@ def extract_grades_in_text(text: str) -> list[str]:
     '''
     Extracts grades from a string. 
     '''
-    grades = ['NM', 'M', 'LP', 'MP', 'HP', 'Near Mint', 'Mint', 'Lightly Played', 'Moderately Played', 'Heavily Played']
+    abbrv_grades = ['NM', 'M', 'LP', 'MP', 'HP', 'Near Mint', 'Mint', 'Lightly Played', 'Moderately Played', 'Heavily Played', 'Near Mint']
     response = []
     for word in text.split(' '):
-        for grade in grades:
+        for grade in abbrv_grades:
             if word == grade:
                 response.append(grade)
                 continue
-            if any(word.replace(' ', '') == f'{grade}/{grade2}' or word.replace(' ', '') == f'{grade2}/{grade}' for grade2 in grades):
+            if any(word.replace(' ', '') == f'{grade}/{grade2}' or word.replace(' ', '') == f'{grade2}/{grade}' for grade2 in abbrv_grades):
                 response.append(grade)
     for i in range(20):
         if f'BGS {round(i/2, 1)}' in text:
-            grades.append(f'BGS {round(i/2, 1)}')
+            return {
+                "grade": round(i/2, 1),
+                "type": "BGS"
+            }
         if f'PSA {round(i/2, 1)}' in text:
-            grades.append(f'PSA {round(i/2, 1)}')
-    return response
+            return {
+                "grade": round(i/2, 1),
+                "type": "PSA"
+            }
+    for i in range(1, 11):
+        i = 11 - i
+        if f'CGC {i}' in text:
+            return {
+                "grade": i,
+                "type": "CGC"
+            }
+        if f'PSA {i}' in text:
+            return {
+                "grade": i,
+                "type": "PSA"
+            }
+        if f'BGS {i}' in text:
+            return {
+                "grade": i,
+                "type": "BGS"
+            }
+    if len(response) == 1:
+        return response[0]
+    elif len(response) > 1:
+        return '/'.join(response)
+    else:
+        return None

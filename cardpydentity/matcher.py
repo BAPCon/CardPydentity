@@ -20,12 +20,13 @@ class Matcher:
         Function to get the category of the text.   
         '''
         simple_match = self.get_category_simple(self.raw_text)
+        print(simple_match)
         if simple_match:
             return simple_match
-        return self.get_category_complex(self.raw_text)
+        return self.get_category_complex(text=self.raw_text)
 
     @staticmethod
-    def get_category_complex(self, text: str):
+    def get_category_complex(text: str):
         # To be implemented
         pass
 
@@ -76,15 +77,13 @@ class Matcher:
         self.number_present = [_ for _ in extract_numbers_in_text(text) if _ not in (
             self.tuple_present if self.tuple_present else []) and _ != (self.year_present if self.year_present else '')]
         self.grades_present = extract_grades_in_text(text)
-        for grade in self.grades_present:
-            for grade2 in self.grades_present:
-                if grade != grade2:
-                    text = text.replace(f'- {grade}/{grade2}', '')
-                    text = text.replace(f'-{grade}/{grade2}', '')
-                    text = text.replace(f'{grade}/{grade2}', '')
-        for grade in self.grades_present:
-            text = " ".join(
-                [word for word in text.split(' ') if word != grade])
+        if self.grades_present:
+            for grade in self.grades_present:
+                for grade2 in self.grades_present:
+                    if grade != grade2:
+                        text = text.replace(f'- {grade}/{grade2}', '')
+                        text = text.replace(f'-{grade}/{grade2}', '')
+                        text = text.replace(f'{grade}/{grade2}', '')
         included_attrs = {
             'year': self.year_present,
             'tuple': self.tuple_present,

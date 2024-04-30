@@ -9,6 +9,8 @@ JSON_FILES = (
     ('pokemon', 'https://bidrpublicfiles.s3.amazonaws.com/pokemon.json'),
     ('magic',   'https://bidrpublicfiles.s3.amazonaws.com/mtg.json'),
     ('funko',   'https://bidrpublicfiles.s3.amazonaws.com/funko.json'),
+    ('yugioh',   'https://bidrpublicfiles.s3.amazonaws.com/yugioh.json'),
+    ('one_piece',   'https://bidrpublicfiles.s3.amazonaws.com/one_piece.json'),
 )
 
 SOURCES_REGISTERED = False
@@ -49,8 +51,6 @@ class CardPydentitier:
                     CardPydentitier.__load_app_data__, 
                     {'url': url, 'file_name': f"{name}.json"}
                 )
-            register_source('yugioh', local_source, {'path': 'yugioh.json'})
-            register_source('one_piece', local_source, {'path': 'one_piece.json'})
 
     def __load_app_data__(url: str, file_name: str):
         '''
@@ -77,4 +77,6 @@ class CardPydentitier:
         '''
         matcher = Matcher(text, category)
         matcher.format_for_matching()
-        return matcher.match()[0]
+        match = matcher.match()[0]
+        match['grading'] = matcher.grades_present
+        return match
