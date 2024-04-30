@@ -31,7 +31,7 @@ card = CardPydentitier().Build("PSA 10 Luffy Nika Gear 5 OP05-119 Parallel SEC N
 ## About
 Simpler, non-ML, and local version of collectibles classifier. More collectible categories are planned. 
 
-A Python package that allows collectibles and trading cards to be identified and parsed from the title of a listing on eBay or any other retailers. Currently uses [fuzzymatching](https://en.wikipedia.org/wiki/Approximate_string_matching) and a master list of over 135,000 Pokemon and Magic: The Gathering cards.
+A Python package that allows collectibles and trading cards to be identified and parsed from the title of a listing on eBay or any other retailers. Currently uses [fuzzymatching](https://en.wikipedia.org/wiki/Approximate_string_matching) and a master list of over 135,000 Pokemon, Magic: The Gathering cards, One Piece, and Yugioh cards.
 
 #### Current Available Brands:
 -   Magic: The Gathering
