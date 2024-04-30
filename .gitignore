@@ -9,3 +9,5 @@ app.py
 
 /one_piece.json
 /yugioh.json
+
+*.json
