@@ -34,6 +34,7 @@ card = bd.Build('PSA 10 Luffy Nika Gear 5 OP05-119 Parallel SEC New Era One Piec
 print(card)
 
 >>> {'series': {'name': 'Booster Pack Awakening of the New Era'}, 'card': {'name': 'Monkey.D.Luffy', 'set': 'Booster Pack Awakening of the New Era', 'number': 'OP05-119', 'type': 'Character - the four emperors/straw hat crew strike'}, 'score': 60, 'match': 'OP05-119 Monkey.D.Luffy Booster Pack Awakening of the New Era'}
+```
 
 ## About
 Simpler, non-ML, and local version of collectibles classifier. More collectible categories are planned. 
