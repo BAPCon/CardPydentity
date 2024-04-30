@@ -15,9 +15,9 @@ JSON_FILES = (
 
 SOURCES_REGISTERED = False
 
-class CardPydentitier:
+class Identifier:
     '''
-    The CardPydentitier class is responsible for identifying cards based on given text and category.
+    The Identifier class is responsible for identifying cards based on given text and category.
 
     It provides a `Build` method that takes a text and an optional category as input and returns a Matcher object.
 
@@ -25,13 +25,13 @@ class CardPydentitier:
         None
 
     Methods:
-        __init__(): Initializes the CardPydentitier object and registers the sources if not already registered.
+        __init__(): Initializes the Identifier object and registers the sources if not already registered.
         __register_sources__(): Registers the sources by calling the `register_source` function for each JSON file.
         __load_app_data__(url: str, file_name: str): Loads the app data from the given URL and file name.
         Build(text: str, category: str = None): Builds a Matcher object based on the given text and category.
 
     Example usage:
-        card_identifier = CardPydentitier()
+        card_identifier = Identifier()
         matcher = card_identifier.Build("Some text", "Some category")
     '''
 
@@ -48,7 +48,7 @@ class CardPydentitier:
             for name, url in JSON_FILES:
                 register_source(
                     name, 
-                    CardPydentitier.__load_app_data__, 
+                    Identifier.__load_app_data__, 
                     {'url': url, 'file_name': f"{name}.json"}
                 )
 
